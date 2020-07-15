@@ -34,13 +34,13 @@ def decode_review(text):
 
 # MODEL
 
-model = keras.Sequential([
-    keras.layers.Embedding(encoder.vocab_size, 64),
-    keras.layers.Bidirectional(tf.keras.layers.LSTM(64,  return_sequences=True)),
-    keras.layers.Bidirectional(tf.keras.layers.LSTM(32)),
-    keras.layers.Dense(64, activation='relu'),
-    keras.layers.Dropout(0.5),
-    keras.layers.Dense(1)
+model = keras.Sequential()
+model.add(keras.layers.Embedding(88000, 16))
+model.add(keras.layers.Bidirectional(keras.layers.LSTM(64, return_sequences=True)))
+model.add(keras.layers.Bidirectional(keras.layers.LSTM(32)))
+model.add(keras.layers.Dense(64, activation='relu'))
+model.add(keras.layers.Dropout(0.5))
+model.add(keras.layers.Dense(1))
 
 model.summary()
 
